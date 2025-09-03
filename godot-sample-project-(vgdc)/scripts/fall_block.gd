@@ -5,11 +5,17 @@ var starting_location: Vector2
 var starting_modulate: Color
 
 func _ready():
+	Globals.fall_blocks.connect(fall)
 	freeze = true
 	$FallTimer.wait_time = time_to_fall
 	starting_location = global_position
 	starting_modulate = modulate
-	
+
+func fall():
+	if not $FallTimer.time_left and not $DespawnTimer.time_left:
+		$FallTimer.start()
+		modulate += Color("#4f0000")
+
 func reset():
 	modulate = starting_modulate
 	freeze = true
@@ -24,6 +30,5 @@ func _on_despawn_timer_timeout():
 
 
 func _on_step_detector_body_entered(body):
-	if "is_on_floor" in body and body.is_on_floor() and not $FallTimer.time_left:
-		$FallTimer.start()
-		modulate += Color("#4f0000")
+	if "is_on_floor" in body and body.is_on_floor():
+		fall()

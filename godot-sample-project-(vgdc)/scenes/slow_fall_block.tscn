@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://djw4ygrx4bf24"]
+
+[ext_resource type="PackedScene" uid="uid://bj3n062qosaxj" path="res://scenes/fall_block.tscn" id="1_b6uky"]
+
+[node name="FallBlock" instance=ExtResource("1_b6uky")]
+modulate = Color(0.653504, 0.800539, 0.920291, 1)
+gravity_scale = 0.2
+time_to_fall = 2.0

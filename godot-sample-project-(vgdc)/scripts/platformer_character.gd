@@ -44,6 +44,8 @@ func handle_input():
 		
 		if velocity.y > 0 and not is_on_floor():
 			$Timers/SmartJump.start()
+	if Input.is_action_just_pressed("fall_blocks"):
+		Globals.fall_blocks.emit()
 
 func apply_movement():
 		

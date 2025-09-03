@@ -7,9 +7,10 @@
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86l2j"]
-size = Vector2(16, 2)
+size = Vector2(16, 1)
 
 [node name="FallBlock" type="RigidBody2D"]
+modulate = Color(0.439216, 0.431373, 0.65098, 1)
 can_sleep = false
 freeze = true
 script = ExtResource("1_tpivu")
@@ -34,7 +35,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StepDetector"]
-position = Vector2(0, -9)
+position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_86l2j")
 debug_color = Color(0.69406, 0.443941, 0.591528, 0.42)
 
