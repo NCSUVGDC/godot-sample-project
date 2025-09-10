@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # Export variables can help you find the right values
-@export var speed := 150
-@export var run_speed := 250
+@export var speed := 200
+@export var run_speed := 350
 var direction := Vector2.ZERO
 
 @export var jump_strength := 300
