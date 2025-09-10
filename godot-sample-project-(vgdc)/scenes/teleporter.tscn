@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://fuh3eniayob7"]
+
+[ext_resource type="Script" uid="uid://ila1fbvajfgh" path="res://scripts/teleporter.gd" id="1_pce0k"]
+[ext_resource type="Texture2D" uid="uid://b6pd12q3f4hin" path="res://assets/sprites/whitetile.png" id="2_hkm18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsywe"]
+size = Vector2(20, 37)
+
+[node name="Teleporter" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_pce0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.678431, 1, 1, 0.623529)
+position = Vector2(10, 18.5)
+scale = Vector2(1.25, 2.3125)
+texture = ExtResource("2_hkm18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 18.5)
+shape = SubResource("RectangleShape2D_tsywe")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
