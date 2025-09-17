@@ -8,9 +8,11 @@ size = Vector2(14, 31)
 
 [sub_resource type="Animation" id="Animation_uwx4p"]
 resource_name = "idle"
+loop_mode = 1
 
 [sub_resource type="Animation" id="Animation_mplb7"]
 resource_name = "run"
+loop_mode = 1
 
 [sub_resource type="Animation" id="Animation_lofpj"]
 resource_name = "jump"
