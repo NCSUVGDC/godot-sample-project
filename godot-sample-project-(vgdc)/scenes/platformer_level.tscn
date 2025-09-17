@@ -43,7 +43,7 @@ tile_map_data = PackedByteArray("AAADAAoAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAAsAAQAAAAA
 tile_set = SubResource("TileSet_y16t7")
 
 [node name="ObjectTiles" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAKAAcAAAAAAAAAAQAHAAcAAAAAAAAAAgANAAcAAAAAAAAAAwA=")
+tile_map_data = PackedByteArray("AAAKAAcAAAAAAAAAAQAHAAcAAAAAAAAAAgANAAcAAAAAAAAAAwAaABIAAAAAAAAAAgAcABIAAAAAAAAAAgAbABIAAAAAAAAAAgAdABIAAAAAAAAAAgAaAAoAAAAAAAAAAwAaAAwAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_4ge6i")
 
 [node name="PlatformerCharacter" parent="." instance=ExtResource("2_bsho3")]
@@ -126,11 +126,11 @@ offset_bottom = 644.0
 text = "<- design"
 
 [node name="ArtArrow" type="Label" parent="Labels/Arrows"]
-offset_left = 509.0
-offset_top = 186.0
-offset_right = 653.0
-offset_bottom = 209.0
-text = "art -> coming soon"
+offset_left = 260.0
+offset_top = 119.0
+offset_right = 404.0
+offset_bottom = 142.0
+text = "art ->"
 
 [node name="Programming Checkpoints" type="Node" parent="Labels"]
 

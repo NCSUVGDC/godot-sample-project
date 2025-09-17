@@ -1,10 +1,101 @@
-[gd_scene load_steps=4 format=3 uid="uid://qwt0hsjkojy5"]
+[gd_scene load_steps=26 format=3 uid="uid://qwt0hsjkojy5"]
 
 [ext_resource type="Texture2D" uid="uid://cl2wlkibyjuhu" path="res://icon.svg" id="1_a7bs2"]
 [ext_resource type="Script" uid="uid://d0nnmfpfmkppk" path="res://scripts/platformer_character.gd" id="1_uwx4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwx4p"]
 size = Vector2(14, 31)
+
+[sub_resource type="Animation" id="Animation_uwx4p"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_mplb7"]
+resource_name = "run"
+
+[sub_resource type="Animation" id="Animation_lofpj"]
+resource_name = "jump"
+
+[sub_resource type="Animation" id="Animation_k4ggy"]
+resource_name = "fall"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lofpj"]
+_data = {
+&"fall": SubResource("Animation_k4ggy"),
+&"idle": SubResource("Animation_uwx4p"),
+&"jump": SubResource("Animation_lofpj"),
+&"run": SubResource("Animation_mplb7")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c5f82"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k4ggy"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0c3jl"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t1vim"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c5f82"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0c3jl"]
+advance_mode = 2
+advance_condition = &"running"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nyaep"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0atdb"]
+advance_mode = 2
+advance_condition = &"jumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_coleq"]
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j2p2k"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fyhwx"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ddovj"]
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2jljg"]
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g0e55"]
+advance_mode = 2
+advance_condition = &"running"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fpmks"]
+advance_mode = 2
+advance_condition = &"jumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_anfbh"]
+advance_mode = 2
+advance_condition = &"running"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0atdb"]
+states/Start/position = Vector2(146, 208)
+states/fall/node = SubResource("AnimationNodeAnimation_c5f82")
+states/fall/position = Vector2(491, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_k4ggy")
+states/idle/position = Vector2(242, 342)
+states/jump/node = SubResource("AnimationNodeAnimation_0c3jl")
+states/jump/position = Vector2(242, 100)
+states/run/node = SubResource("AnimationNodeAnimation_t1vim")
+states/run/position = Vector2(482, 342)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_c5f82"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_0c3jl"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_nyaep"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_0atdb"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_coleq"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_j2p2k"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_fyhwx"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_ddovj"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_2jljg"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_g0e55"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_fpmks"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_anfbh")]
 
 [node name="PlatformerCharacter" type="CharacterBody2D"]
 collision_layer = 3
@@ -33,3 +124,16 @@ one_shot = true
 [node name="SmartJump" type="Timer" parent="Timers"]
 wait_time = 0.25
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lofpj")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_0atdb")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/falling = false
+parameters/conditions/idle = false
+parameters/conditions/jumping = false
+parameters/conditions/running = false

@@ -3,6 +3,8 @@ extends RigidBody2D
 # Time it takes for block to start to fall
 @export_range(0, 3.0) var time_to_fall: float
 
+var falling = false
+
 # Original position of block kept for reset
 var starting_location: Vector2
 
@@ -19,7 +21,12 @@ func _ready():
 	$FallTimer.wait_time = time_to_fall
 	starting_location = global_position
 	starting_modulate = modulate
-
+	
+func _process(delta):
+	# TO-DO: Use this method to update the animation tree's
+	# condition parameters based on the falling variable
+	pass # delete me
+	
 # Make the block fall
 func fall():
 	# Unless the block is already falling
@@ -33,11 +40,13 @@ func fall():
 # reset the block to its original state
 func reset():
 	modulate = starting_modulate
+	falling = false
 	freeze = true
 	global_position = starting_location
 
 # Begin the fall and despawn timer
 func _on_fall_timer_timeout():
+	falling = true
 	freeze = false
 	$DespawnTimer.start()
 
