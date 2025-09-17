@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de5jva8f1frml"
-path="res://.godot/imported/sunflowersheettemp.png-6a567474536f42e1005932a660905ebd.ctex"
+uid="uid://cgqne7o4qdsdd"
+path="res://.godot/imported/Parallax_Midground.png-39bbc5a7d046634ea53d060d50655060.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sunflowersheettemp.png"
-dest_files=["res://.godot/imported/sunflowersheettemp.png-6a567474536f42e1005932a660905ebd.ctex"]
+source_file="res://assets/sprites/Parallax_Midground.png"
+dest_files=["res://.godot/imported/Parallax_Midground.png-39bbc5a7d046634ea53d060d50655060.ctex"]
 
 [params]
 

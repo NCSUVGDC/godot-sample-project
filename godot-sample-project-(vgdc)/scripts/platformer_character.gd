@@ -97,8 +97,8 @@ func update_display():
 	# Update AnimationTree's parameters
 	$AnimationTree.set("parameters/conditions/idle", not walking and is_on_floor())
 	$AnimationTree.set("parameters/conditions/running", walking and is_on_floor())
-	$AnimationTree.set("parameters/conditions/jumping", jump and velocity.y <= 0)
-	$AnimationTree.set("parameters/conditions/falling", jump and velocity.y > 0)
+	$AnimationTree.set("parameters/conditions/jumping", not is_on_floor() and velocity.y <= 0)
+	$AnimationTree.set("parameters/conditions/falling", not is_on_floor() and velocity.y > 0)
 	
 # Get gravity
 func get_grav():

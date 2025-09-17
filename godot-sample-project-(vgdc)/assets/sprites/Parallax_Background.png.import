@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyjo3fmonikes"
-path="res://.godot/imported/tilemap.png-97bf26cbe4098c4ccdc8ca24f9406864.ctex"
+uid="uid://c4qvnl3tilo2a"
+path="res://.godot/imported/Parallax_Background.png-81b7854f9ecf757c1b593326256f8aa1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tilemap.png"
-dest_files=["res://.godot/imported/tilemap.png-97bf26cbe4098c4ccdc8ca24f9406864.ctex"]
+source_file="res://assets/sprites/Parallax_Background.png"
+dest_files=["res://.godot/imported/Parallax_Background.png-81b7854f9ecf757c1b593326256f8aa1.ctex"]
 
 [params]
 
